@@ -8,7 +8,8 @@
 body {
     font-family: "Roboto", sans-serif;
     display: flex;
-    flex-direction: column;
+    /* gradient horizontally across body */
+    background-image: linear-gradient(90deg, #7d5fff, #7158e2);
     /* Centered horizontally */
     align-items: center; 
     /* Centered vertically on 100% viewport */
@@ -19,4 +20,63 @@ body {
     overflow: hidden;
     /* no margins  */
     margin: 0;
+}
+
+/* div with class search */
+.search {
+    /* position relative so children can be positioned absolute */
+    position: relative;
+    height: 50px;
+}
+
+/* input inside search div */
+.search .input {
+    background-color: white;
+    /* remove border around input box */
+    border: 0;
+    font-size: 18px;
+    padding: 15px;
+    height: 50px;
+    width: 50px;
+    /* 0.3s transition on width property, ease effect */
+    transition: width 0.3s ease;
+}
+
+/* button (gave btn class) */
+.btn {
+    background-color: white;
+    /* removes border around button */
+    border: 0;
+    /* cursor changes to pointer when hovered over button */
+    cursor: pointer;
+    /* affects icon size */
+    font-size: 24px;
+    /* position absolute inside .search */
+    position: absolute;
+    /* top, left 0 to position in top left corner */
+    top: 0;
+    left: 0;
+    /* 50 x 50 to make same size as input to cover up (initially) */
+    height: 50px;
+    width: 50px;
+    /* 0.3s transform to move button, ease effect */
+    transition: transform 0.3s ease;
+}
+
+/* when either button or input when focused */
+.btn:focus, .input:focus {
+    /* remove outline */
+    outline: none;
+}
+
+/* when search has active class, affect input */
+.search.active .input {
+    /* change width from 50 to 200 */
+    width: 200px;
+}
+
+/* when search has active class, affect button */
+.search.active .btn {
+    /* move 198px in positive x direction (to the right) */
+    transform: translateX(198px)
 }
